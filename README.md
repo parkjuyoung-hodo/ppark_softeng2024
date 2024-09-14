@@ -73,6 +73,25 @@ def main():
 if __name__ == "__main__":
     main()
 
+## Tkinter 대화 상자 코드
+
+	import tkinter
+	from tkinter import messagebox
+
+	tkinter.messagebox.showinfo("제목","메세지")
+
+![화면 캡처 2024-09-15 015935](https://github.com/user-attachments/assets/e1b78b9b-421f-40b0-b699-9d1bdc5d4f98)
+
+## Tkinter 입력 상자 코드
+
+
+
+
+
+
+
+
+
 
     
 
