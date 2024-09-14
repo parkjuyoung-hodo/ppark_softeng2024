@@ -24,6 +24,8 @@ def main():
     if is_even(n):
         result= f'{n}은 짝수입니다'
 
+        messagebox.showinfo("결과", result)
+
     else:
         result = f'{n}은 홀수입니다.'
 

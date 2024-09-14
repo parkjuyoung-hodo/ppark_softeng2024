@@ -25,6 +25,8 @@ def main():
     if is_prime(n):
         result = f'{n}은 소수 입니다'
 
+        messagebox.showinfo("결과", result)
+
     else:
         result = f'{n}은 소수가 아닙니다.'
 
