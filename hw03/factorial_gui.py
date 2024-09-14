@@ -29,6 +29,5 @@ def main():
         messagebox.showwarning("결과", "자연수를 입력해주세요.")
 
 
-
 if __name__ == "__main__":
     main()

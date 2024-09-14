@@ -19,14 +19,18 @@ def primenumbers(n: int):
     return primenums
 
 
-window = tk.Tk()
-window.withdraw()
+def main():
+    window = tk.Tk()
+    window.withdraw()
 
-input_num = gui_input("2부터 입력한 숫자 사이의 소수를 구하고 싶은 숫자를 입력해주세요.")
+    input_num = gui_input("2부터 입력한 숫자 사이의 소수를 구하고 싶은 숫자를 입력해주세요.")
 
-n = int(input_num)
-primenums = primenumbers(n)
+    n = int(input_num)
+    primenums = primenumbers(n)
 
-result = f'{n}까지의 소수: {primenums}'
+    result = f'{n}까지의 소수: {primenums}'
 
-messagebox.showinfo("결과", result)
+    messagebox.showinfo("결과", result)
+
+if __name__=="__main__":
+    main()
