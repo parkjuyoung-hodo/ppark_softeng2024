@@ -26,7 +26,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
  function post_query() {
  $.ajax({
  type: "GET",
- url: "http://127.0.0.1:5000/gugudan/",
+ url: "http://127.0.0.1:5000/change/pung/",
  data: $("#form_id").serialize(),
  success: update_result,
  dataType: "html"
@@ -46,10 +46,10 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
 
-@app.route('/gugudan/')
-def gugudan_arg_html():
-    p = request.args.get("p", "2")
-    html_str = f"{int(p) * 3.3}㎡</strong><br></n>{(int(p) / 3025):.6f}ha"
+@app.route('/change/pung/')
+def pung_html():
+    p = request.args.get("p")
+    html_str = f"{(int(p) * 3.3):.6g}㎡</strong><br></n>{(int(p) / 3025):.6g}ha"
     return html_str
 
 
