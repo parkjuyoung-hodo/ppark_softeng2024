@@ -16,10 +16,6 @@ def to_eunbin_page():
 def to_juyoung_page():
     return render_template('to_juyoung_page.html', title="to_juyoung_page")
 
-# @app.route('/layout_page')
-# def layout_page():
-#     return render_template('layout.html',title="layout_page")
-
 
 @app.route('/blog')
 def blog_list():
@@ -39,6 +35,3 @@ def blog_list():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
