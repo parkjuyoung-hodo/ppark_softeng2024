@@ -17,6 +17,7 @@ def to_juyoung_page():
     return render_template('to_juyoung_page.html', title="to_juyoung_page")
 
 
+
 @app.route('/blog')
 def blog_list():
 
@@ -35,3 +36,4 @@ def blog_list():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
+
