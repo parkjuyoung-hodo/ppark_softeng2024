@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import pandas as pd
 
 # Create your views here.
 def landing_page(request):
@@ -12,14 +13,16 @@ def eunbin_page(request):
 
 
 def blog_list(request):
-    post_list = [
-        {
-            'title': 'First Post',
-            'content': 'This is the first post'
-        },
-        {
-            'title': 'Second Post',
-            'content': 'This is the second post'
-        }
-    ]
+
+    df = pd.read_csv("data.csv")
+    post_list = []
+    for i, row in df.iterrows():
+        post_list.append({
+            "title": row["title"],
+            "content": row["content"],
+            "date": row["date"]
+        })
+
+    print(post_list)
+
     return render(request, 'single_pages/blog.html', {'title': 'Blog List', 'posts': post_list})
