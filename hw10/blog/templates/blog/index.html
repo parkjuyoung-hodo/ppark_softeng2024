@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<style>
+        nav {
+            background-color: #4AB378;
+            font-size: 150%;
+            text-align: center;
+        }
+</style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+        <a href="{% url 'single_pages:landing_page' %}">누리집</a>
+        <a href="{% url 'single_pages:eunbin_page' %}">은빈이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:juyoung_page' %}">주영이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:blog_list' %}">블로그</a>
+
+  </nav>
+    <h1>Blog</h1>
+
+{% for p in posts %}
+    <hr/>
+    <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
+    <h4>{{ p.created_at }}</h4>
+    <p>{{ p.content }}</p>
+{% endfor %}
+
+
+</body>
+
+
+</html>

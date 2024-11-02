@@ -1,0 +1,15 @@
+{% extends 'single_pages/layout.html' %}
+
+{% block content %}
+        <h1>Blog</h1>
+{% if posts|length > 0 %}
+{% for post in posts %}
+        <p>제목: {{ post.title }}</p>
+        <p>내용: {{ post.content }}</p>
+        <p>날짜: {{ post.date }}</p>
+<hr>
+{% endfor %}
+{% else %}
+        <p>아직 작성하지 않았습니다.</p>
+{%endif%}
+{% endblock %}
