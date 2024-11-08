@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}} - 박은빈_박주영 블로그</title>
+    {% load static %}
+    <link href="{% static 'single_pages/design.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'single_pages/cal_pung.js' %}"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="{% url 'single_pages:landing_page' %}">누리집</a>
+        <a href="{% url 'single_pages:eunbin_page' %}">은빈이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:juyoung_page' %}">주영이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:blog_list' %}">블로그</a>
+        <a href="{% url 'blog:post_list' %}">Blog</a>
+        <a href="{% url 'index' %}">스케줄</a>
+    </nav>
+
+
+    <div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>

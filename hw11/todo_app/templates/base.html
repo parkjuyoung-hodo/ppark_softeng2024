@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django To-do Lists</title>
+    <style>
+        nav {
+            background-color: #4AB378;
+            font-size: 150%;
+            text-align: center;
+        }
+        nav a {color: #000000}
+</style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="{% url 'single_pages:landing_page' %}">누리집</a>
+        <a href="{% url 'single_pages:eunbin_page' %}">은빈이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:juyoung_page' %}">주영이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:blog_list' %}">블로그</a>
+        <a href="{% url 'blog:post_list' %}">Blog</a>
+        <a href="{% url 'index' %}">스케줄</a>
+
+  </nav>
+
+    <div>
+        <h1 onclick="location.href='{% url 'index' %}'">
+            Django To-do Lists
+        </h1>
+    </div>
+    <div>
+        {% block content %}
+        This content will be replaced by different html code for each page.
+        {% endblock %}
+    </div>
+</body>
+
+</html>
