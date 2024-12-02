@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+
+{% block head_title %}
+    Posts Category
+{% endblock %}
+
+{% block header %}
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1>Posts in Category: {{ category.name }}</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block main_area %}
+        <div class="col-lg-8" style="margin-top: 18px;">
+            {% for post in posts %}
+            <div class="card mb-4">
+                <a href="{{ post.get_absolute_url }}">
+                    {% if post.head_image %}
+                    <img class="card-img-top" src="{{ post.head_image.url }}" style="width: 728px; height: 180px; object-fit: cover;" alt="{{ post }} head image" />
+                    {% else %}
+                    <img class="card-img-top" src="https://picsum.photos/seed/{{ post.id }}/800/200" alt="random_image" />
+                    {% endif %}
+                </a>
+                <div class="card-body">
+                    <div class="small text-muted">{{ post.created_at }}</div>
+                    {% if post.category %}
+                    <span class="badge badge-secondary float-right">{{ post.category }}</span>
+                    {% else %}
+                    <span class="badge badge-secondary float-right">미분류</span>
+                    {% endif %}
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    {% if post.hook_text %}
+                    <h5 class="text-muted">{{ post.hook_text }}</h5>
+                    {% endif %}
+                    <p class="card-text">{{ post.content|truncatewords:45 }}</p>
+                    <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read more →</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ post.created }} by
+                    <a href="#">{{ post.author }}</a>
+                </div>
+            </div>
+            {% empty %}
+            <h4>No posts available in this category.</h4>
+            {% endfor %}
+        </div>
+{% endblock %}
