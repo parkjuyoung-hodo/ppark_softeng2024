@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<style>
+        nav {
+            background-color: #4AB378;
+            font-size: 150%;
+            text-align: center;
+        }
+        nav a {color: #000000}
+</style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+        <a href="{% url 'single_pages:landing_page' %}">누리집</a>
+        <a href="{% url 'single_pages:eunbin_page' %}">은빈이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:juyoung_page' %}">주영이네로 놀러오세요</a>
+        <a href="{% url 'single_pages:blog_list' %}">블로그</a>
+        <a href="{% url 'blog:post_list' %}">Blog</a>
+        <a href="{% url 'index' %}">스케줄</a>
+
+  </nav>
+    <h1>Blog</h1>
+
+{% for p in post_list %}
+<div class="card mb-4">
+    {% if p.head_image %}
+        <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" style="width: 1600px; height: 200px; object-fit: cover;">
+    {% else %}
+        <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
+    {% endif %}
+    <div class="card-body">
+        <h2 class="card-title">{{ p.title }}</h2>
+        <p class="card-text">{{ p.content }}</p>
+        <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+    </div>
+    <div class="card-footer text-muted">
+        Posted on {{ p.created_at }}
+    </div>
+</div>
+{% endfor %}
+
+
+</body>
+
+
+</html>
