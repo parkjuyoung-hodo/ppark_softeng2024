@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% block main_area %}
+<!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <h1>Blog Details</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Blog Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+<body class="blog-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+
+                <!-- Blog Details Section -->
+                <section id="blog-details" class="blog-details section">
+                <div class="container">
+                    <article class="article">
+
+                        <div class="post-img">
+                            {% if post.head_image %}
+                                <img src="{{ post.head_image.url }}" alt="{{ p }} head image" class="img-fluid" style="width: 800px; height: 310px; object-fit: cover;">
+                            {% else %}
+                                    <img src="https://picsum.photos/seed/{{ p.id }}/800/310" alt="random_image">
+                            {% endif %}
+                        </div>
+
+                        <h2 class="title">{{ post.title }}</h2>
+
+                        <div class="meta-top">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>{{ post.created_at }}</li>
+                            </ul>
+
+
+<nav>
+    <a href="/blog/">Blog</a>
+</nav>
+<h1>{{ post.title }}</h1>
+<h4>{{ post.created_at }}</h4>
+<p>{{ post.content }}</p>
+<hr/>
+<h3>여기 댓글이 들어왔으면 좋겠다!</h3>
+</body>
+
+{% endblock %}
