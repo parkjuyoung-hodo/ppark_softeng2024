@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import Portfolio
+
+# Create your views here.
 
 def landing(request):
     return render(
@@ -12,4 +15,12 @@ def about_me(request):
         'single_pages/about_me.html'
     )
 
-# Create your views here.
+def raspberry(request):
+    portfolios = Portfolio.objects.all()
+    categories = Portfolio.objects.values_list('category', flat=True).distinct()
+
+    return render(request, 'single_pages/raspberry.html', {
+        'portfolios': portfolios,
+        'categories': categories,
+    })
+

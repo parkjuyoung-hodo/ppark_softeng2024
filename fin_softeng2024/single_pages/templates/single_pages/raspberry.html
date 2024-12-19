@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+<!-- Page Title -->
+<div class="page-title light-background">
+  <div class="container">
+    <h1>Raspberry</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li>Source</li>
+        <li class="current">Raspberry</li>
+      </ol>
+    </nav>
+  </div>
+</div><!-- End Page Title -->
+
+<!-- Portfolio Section -->
+<div class="portfolio" style="margin-top: 15px;">
+  <ul class="portfolio-filters" >
+    <li class="filter-active">All</li>
+    <li class="filter-app">App</li>
+    <li class="filter-product">Product</li>
+    <li class="filter-branding">Branding</li>
+  </ul>
+
+{% for item in portfolios %}
+  <div class="container">
+
+    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ item.category }}">
+      {% if item.image %}
+        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}">
+      {% else %}
+        <img src="https://picsum.photos/seed/{{ post.id }}/800/600" class="img-fluid" alt="random_image">
+      {% endif %}
+      <div class="portfolio-info">
+        <h4>{{ item.title }}</h4>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+
+  </div>
+{% endfor %}
+
+</div>
+
+
+
+
+
+{% load static %}
+<link href="{% static 'blog/css/main.css' %}" rel="stylesheet">
+
+<script src="{% static 'blog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'blog/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'blog/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'blog/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'blog/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'blog/js/main.js' %}"></script>
+
+
+{% endblock %}
