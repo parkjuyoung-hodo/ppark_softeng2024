@@ -1,5 +1,6 @@
 from django.db import models
 
+# Create your models here.
 class Post(models.Model):
     title =models.CharField(max_length=30)
     hook_text =models.CharField(max_length=100, blank=True)
@@ -18,5 +19,12 @@ class Post(models.Model):
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    author = models.CharField(max_length=80)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-# Create your models here.
+    def __str__(self):
+        return f'{self.author} - {self.text[:20]}'
+

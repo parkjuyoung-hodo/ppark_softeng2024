@@ -7,7 +7,7 @@
         <h1>Blog</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="current">Blog</li>
           </ol>
         </nav>
@@ -27,7 +27,7 @@
                       {% if p.head_image %}
                         <img src="{{ p.head_image.url }}" alt="{{ p }} head image" class="img-fluid" style="width: 800px; height: 310px; object-fit: cover;">
                       {% else %}
-                        <img src="https://picsum.photos/seed/{{ p.id }}/800/310" alt="random_image">
+                        <img src="https://picsum.photos/seed/{{ p.id }}/1600/300" alt="random_image">
                       {% endif %}
                   </div>
 
@@ -60,14 +60,23 @@
   <div class="container">
     <div class="d-flex justify-content-center">
       <ul>
-        <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li>...</li>
-        <li><a href="#">10</a></li>
-        <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+        {% if not page_obj.number == 1 %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1">처음</a>
+        </li>
+        {% endif %}
+
+        {% for page_num in page_obj.paginator.page_range %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+            </li>
+        {% endfor %}
+
+        {% if not page_obj.number == page_obj.paginator.num_pages %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

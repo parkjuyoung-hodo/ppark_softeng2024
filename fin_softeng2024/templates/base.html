@@ -12,22 +12,32 @@
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{% static 'blog/bootstrap/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'blog/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" media="screen">
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-    <!-- AOS JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<!--    <link href="{% static 'blog/aos/aos.css' %}" rel="stylesheet" media="screen">-->
-
-    <link href="{% static 'blog/swiper/swiper-bundle.min.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'blog/glightbox/css/glightbox.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'single_pages/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'single_pages/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'single_pages/aos/aos.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'singe_pages/swiper/swiper-bundle.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'single_pages/glightbox/css/glightbox.min.css' %}" rel="stylesheet" media="screen">
 
     <!-- Main CSS File -->
-    <link href="{% static 'blog/css/main.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'single_pages/css/main.css' %}" rel="stylesheet" media="screen">
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'single_pages/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'single_pages/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'single_pages/aos/aos.js' %}"></script>
+    <script src="{% static 'single_pages/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'single_pages/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'single_pages/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'single_pages/imagesloaded/imagesloaded.pkgd.min.js'%}"></script>
+    <script src="{% static 'single_pages/isotope-layout/isotope.pkgd.min.js'%}"></script>
+
+    <!-- Main JS File -->
+    <script src="{% static 'single_pages/js/main.js' %}"></script>
+
+
 </head>
 
 
@@ -48,8 +58,8 @@
                 </ul>
               </li>
               <li><a href="{% url 'blog:blog' %}">Blog</a></li>
-              <li><a href="">Warning</a></li>
-              <li><a href="http://127.0.0.1:8000/admin/">Contact</a></li>
+              <li><a href="#">Warning</a></li>
+              <li><a href="http://127.0.0.1:8000/admin/"><i class="fa fa-lock"></i>&nbsp Login</a></li>
 
 
             </ul>
