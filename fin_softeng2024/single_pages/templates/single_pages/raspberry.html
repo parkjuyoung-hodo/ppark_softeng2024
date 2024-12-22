@@ -27,7 +27,7 @@
 <div class="portfolio container" style="margin-top: 15px;">
   <div class="d-flex align-items-center justify-content-between">
     <!-- Filters -->
-    <ul class="portfolio-filters d-flex" style="flex-wrap: wrap; gap: 10px; margin-left: 500px; margin-top: 10px;">
+    <ul class="portfolio-filters d-flex" style="flex-wrap: wrap; gap: 10px; margin-left: 475px; margin-top: 10px;">
       <li><a href="{% url 'single_pages:raspberry' %}" class="filter-active">All</a></li>
       <li><a href="{% url 'single_pages:raspberry' %}?category=app" class="filter-app">App</a></li>
       <li><a href="{% url 'single_pages:raspberry' %}?category=product" class="filter-product">Product</a></li>
@@ -51,7 +51,9 @@
           <img src="https://picsum.photos/seed/{{ item.id }}/800/600" class="img-fluid" alt="random_image"><br><br>
         {% endif %}
         <div class="portfolio-info">
-          <h4>{{ item.title }}</h4>
+          <h4>
+            <a href="{% url 'single_pages:raspberry_details' item.id %}">{{ item.title }}</a>
+          </h4>
           <p>{{ item.description }}</p>
         </div>
       </div>

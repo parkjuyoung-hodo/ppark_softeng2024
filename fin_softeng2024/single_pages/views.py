@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
 from .models import Portfolio
 
 # Create your views here.
@@ -17,19 +18,24 @@ def about_me(request):
 
 
 def raspberry(request):
-    query = request.GET.get('q')  # 검색어 가져오기
-    category = request.GET.get('category')  # 카테고리 값 가져오기
-    portfolios = Portfolio.objects.all()  # 전체 데이터 가져오기
+    query = request.GET.get('q')
+    category = request.GET.get('category')
+    portfolios = Portfolio.objects.all().order_by('-created_at')
 
-    if query:  # 검색어가 있을 경우
+    if query:
         portfolios = portfolios.filter(title__icontains=query)
 
-    if category:  # 카테고리 값이 있을 경우
+    if category:
         portfolios = portfolios.filter(category=category)
 
     categories = Portfolio.objects.values_list('category', flat=True).distinct()  # 중복 없는 카테고리 목록
 
     return render(request, 'single_pages/raspberry.html', {
-        'portfolios': portfolios,  # 필터링된 데이터
-        'categories': categories,  # 카테고리 목록
+        'portfolios': portfolios,
+        'categories': categories,
     })
+
+class RaspberryDetailView(DetailView):
+    model = Portfolio
+    template_name = 'single_pages/raspberry_details.html'
+    context_object_name = 'post'
