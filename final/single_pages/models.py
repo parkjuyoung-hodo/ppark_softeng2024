@@ -23,6 +23,12 @@ class Raspberry(models.Model):
         null=True,
         verbose_name="프로젝트 URL"
     )
+    blog_url = models.URLField(
+        max_length=300,
+        blank=True,
+        null=True,
+        verbose_name="블로그 URL"
+    )
 
     def __str__(self):
         return self.title
