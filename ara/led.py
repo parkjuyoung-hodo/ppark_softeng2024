@@ -2,7 +2,7 @@ import lgpio
 import time
 
 # GPIO 핀 설정
-LED_PIN = 18
+LED_PIN = 17
 
 # GPIO 핸들 열기
 h = lgpio.gpiochip_open(0)
