@@ -37,6 +37,9 @@
 
 
                         <h1>{{ post.title }}</h1>
+                        <a href="{{ post.file_upload.url }}" class="btn btn-success btn-sm" role="button" download>첨부파일 다운로드
+                        </a>
+
 
                         {% if post.hook_text %}
                         <h5 class="text-muted">{{ post.hook_text }}</h5>
