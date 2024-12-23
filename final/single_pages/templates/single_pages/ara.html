@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+
+{% load static %}
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Main JS File -->
+<script src="{% static 'single_pages/js/main.js' %}"></script>
+
+<!-- Page Title -->
+<div class="page-title light-background">
+  <div class="container">
+    <h1>아라온실</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Source</li>
+        <li class="current">아라온실</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Main Section -->
+<div class="portfolio container" style="margin-top: 15px;">
+  <div class="d-flex align-items-center justify-content-between">
+    <!-- Filters -->
+    <ul class="portfolio-filters d-flex" style="flex-wrap: wrap; gap: 10px; margin-left: 550px; margin-top: 10px;">
+      <li><a href="{% url 'single_pages:ara' %}" class="filter-active, btn btn-get-started">All</a></li>
+      <li><a href="{% url 'single_pages:ara' %}?category=led" class="filter-led, btn btn-get-started">Led</a></li>
+      <li><a href="{% url 'single_pages:ara' %}?category=oled" class="filter-oled, btn btn-get-started">Oled</a></li>
+    </ul>
+
+    <!-- Search Form -->
+    <form method="get" action="" class="search-form d-flex align-items-center" style="max-width: 300px; gap: 10px; margin-bottom: 15px;">
+      <input type="text" name="q" class="form-control" placeholder="Search..." value="{{ request.GET.q }}">
+      <button type="submit" class="btn btn-success"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <!-- Row for items -->
+  <div class="row gy-4" style="margin-bottom: 300px">
+    {% for item in ara %}
+      <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ item.category }}" data-aos="fade-up" data-aos-delay="100">
+        {% if item.image %}
+          <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}" style="width: 600px; height: 350px;"><br><br>
+        {% else %}
+          <img src="https://picsum.photos/seed/{{ item.id }}/800/600" class="img-fluid" alt="random_image"><br><br>
+        {% endif %}
+        <div class="portfolio-info">
+          <h4>
+            <a href="{% url 'single_pages:ara_details' item.id %}">{{ item.title }}</a>
+          </h4>
+          {% if item.hook_text %}
+            <h5 class="text-muted">{{ item.hook_text }}</h5>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center mt-5">게시글이 없습니다.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+
+{% load static %}
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Main JS File -->
+<script src="{% static 'single_pages/js/main.js' %}"></script>
+
+<div class="page-title light-background">
+  <div class="container">
+    <h1>Connect</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li class="current">Connect</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<section id="contact" class="contact section">
+  <div class="container" data-aos="fade">
+    <div class="row gy-5 gx-lg-5">
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="info-item d-flex">
+          <h3><i class="fas fa-envelope"></i>Send E-mail</h3>
+          </div>
+          <hr>
+          <p>
+              If you have any inconveniences or suggestions for improvement regarding this page, please feel free to let us know at any time.
+              We would greatly appreciate it if you could share your thoughts and ideas freely through the email below.
+          </p>
+          <p>
+            이 페이지와 관련하여 불편한 점이나 개선이 필요한 사항이 있다면 언제든 의견을 남겨주세요.
+            아래 이메일을 통해 자유롭게 여러분의 생각과 아이디어를 공유해 주시면 감사하겠습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <!-- 성공 및 실패 메시지 -->
+        {% if success is not None %}
+          {% if success %}
+            <div class="alert alert-success sent-message">Your message has been sent. Thank you!</div>
+          {% else %}
+            <div class="alert alert-danger error-message">There was an error sending your message. Please try again.</div>
+          {% endif %}
+        {% endif %}
+
+        <form method="post" role="form" class="php-email-form">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              {{ form.sender_name.label_tag }}
+              {{ form.sender_name }}
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              {{ form.sender_email.label_tag }}
+              {{ form.sender_email }}
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            {{ form.subject.label_tag }}
+            {{ form.subject }}
+          </div>
+          <div class="form-group mt-3">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+          </div>
+          <div class="text-center">
+            <button type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

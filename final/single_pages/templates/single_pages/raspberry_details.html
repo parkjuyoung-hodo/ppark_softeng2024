@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+
+{% load static %}
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Main JS File -->
+<script src="{% static 'single_pages/js/main.js' %}"></script>
+
+<!-- Page Title -->
+<div class="page-title light-background">
+  <div class="container">
+    <h1>Raspberry Details</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Source</li>
+        <li><a href="{% url 'single_pages:raspberry' %}">Raspberry</a></li>
+        <li class="current">{{ object.title }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<!-- Details Section -->
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container" data-aos="fade-up">
+
+    <div class="post-img">
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }} head image" class="img-fluid" style="width: 900px; height: 500px; object-fit: cover;">
+    {% else %}
+        <img src="https://picsum.photos/seed/{{ post.id }}/900/310" alt="random_image">
+    {% endif %}
+    </div>
+
+    <div class="row justify-content-between gy-4 mt-4">
+
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="portfolio-description">
+          <h2>{{ post.title }}</h2>
+          {% if post.hook_text %}
+            <h5 class="text-muted">{{ post.hook_text }}</h5>
+          {% endif %}
+
+          <hr>
+
+          <p>{{ post.description|linebreaksbr }}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="portfolio-info" style="margin-top: -350px">
+          <h3>Information</h3>
+          <ul>
+            <li><strong>Category</strong>{{ post.category }}</li>
+            <li><strong>Author</strong>{{ post.author }}</li>
+            <li><strong>Project date</strong>{{ post.created_at }}</li>
+            <li>
+              <strong>Project URL</strong>
+              {% if post.project_url %}
+                <a href="{{ post.project_url }}" target="_blank">{{ post.project_url }}</a>
+              {% else %}
+                <span>None</span>
+              {% endif %}
+            <li><a href="#" class="btn-visit align-self-start">Visit Blog</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

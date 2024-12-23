@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+<!-- Page Title -->
+<div class="page-title light-background">
+  <div class="container">
+    <h1>Blog Details</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li class="current">Blog Details</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<body class="blog-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <section id="blog-details" class="blog-details section">
+                    <article class="article">
+                        <div class="post-img">
+                            {% if post.head_image %}
+                                <img src="{{ post.head_image.url }}" alt="{{ post }} head image" class="img-fluid" style="width: 1300px; height: 310px; object-fit: cover;">
+                            {% else %}
+                                    <img src="https://picsum.photos/seed/{{ post.id }}/900/310" alt="random_image">
+                            {% endif %}
+                        </div>
+
+                        <div class="meta-top">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i>{{ post.author | upper }}</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i>{{ post.created_at }}</li>
+                            </ul>
+                        </div>
+
+
+                        <h1>{{ post.title }}</h1>
+
+                        {% if post.hook_text %}
+                        <h5 class="text-muted">{{ post.hook_text }}</h5>
+                        {% endif %}
+                        <p class="card-text">{{ post.content|truncatewords:45 }}</p>
+
+
+                        </article>
+
+                        <!-- Comments Form -->
+                        <div class="card my-4">
+                            <h5 class="card-header">Leave a Comment:</h5>
+                            <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Display comments -->
+                        <h4 class="mt-4">Comments</h4>
+                        {% for comment in comments %}
+                        <div class="media mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="mt-0">
+                                        <i class="bi bi-person-fill"></i> {{ comment.author }}
+                                    </h4>
+                                    <p>{{ comment.text }}</p>
+                                    <small class="text-muted">Posted on {{ comment.created_at }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p>No comments yet. Be the first to comment!</p>
+                        {% endfor %}
+
+            </div>
+                    <!-- Tags Widget -->
+                    <div class="col-lg-4 sidebar">
+                        <div class="widgets-container">
+
+                        <div class="tags-widget widget-item">
+                          <h3 class="widget-title">Tags</h3>
+                          <ul>
+                             {% if post.tags.exists %}
+                              <li>
+                                  {% for tag in post.tags.all %}
+                                  <a href="#">{{ tag }}</a></li>
+                              {% endfor %}
+
+                              {% endif %}
+
+                          </ul>
+
+                        </div><!--/Tags Widget -->
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
